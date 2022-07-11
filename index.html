@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesome navbar</title>
+    <link rel="stylesheet" href="https://use.typekit.net/upu5qui.css">
+    <style>
+        body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background: #161616;
+        font-family: proxima-nova, sans-serif;
+        }
+
+        .nav {
+        width: 100vw;
+        display: flex;
+        align-items: left;
+        background: #1b1b1b;
+        flex-direction: column;
+        }
+        .nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        }
+        .nav ul li {
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        padding: 20px 0 18px 0;
+        }
+        .nav ul .brand-name {
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        color: #fff;
+        font-weight: 800;
+        line-height: 16px;
+        margin: 0 25px 0 25px;
+        width: 110px;
+        }
+        .nav ul .nav-it {
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        color: #CACACA;
+        font-weight: 500;
+        line-height: 16px;
+        margin: 0;
+        width: 110px;
+        }
+        .nav .line {
+        margin: 0 0 0 25px;
+        height: 2px;
+        width: 110px;
+        background: #fff;
+        display: flex;
+        transition: 400ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul class="nav-list">
+            <li class="brand-name" id="home">Fake Brand</li>
+            <li class="nav-it" id="opt">Option 1</li>
+            <li class="nav-it" id="opt">Option 2</li>
+            <li class="nav-it" id="opt">Option 3</li>
+            <li class="nav-it" id="opt">Option 4</li>
+        </ul>
+        <span class="line" id="line"></span>
+    </div>
+    <script>
+        const home = document.getElementById('home')
+        const line = document.getElementById('line')
+        const options = document.querySelectorAll('#opt')
+
+        console.log(options)
+
+        options.forEach(x => {
+            x.addEventListener('mouseenter', (e) => {
+                const oldOffset = line.offsetLeft
+                const newOffset = e.target.offsetLeft
+
+                line.style.transform = `translate(${newOffset - oldOffset}px)`
+                line.style.width = `${e.target.offsetWidth}px`
+            })
+
+            x.addEventListener('mouseleave', () => {
+                const homeOffset = home.offsetLeft - 25
+
+                line.style.transform = `translate(${homeOffset}px)`
+            })
+        })
+    </script>
+</body>
+</html>
